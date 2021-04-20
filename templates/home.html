@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Project Shiksha</h1>
+    <p class="lead">Project Shiksha is a free and open source initiative for schools and tutors during challenging times.</p>
+    <hr class="my-4">
+    {% if not request.user.is_authenticated %}
+        <p>Simply start by registering.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'signup' %}" role="button">Register</a>
+    {% endif %}
+</div>
+
+{% endblock contents %}
