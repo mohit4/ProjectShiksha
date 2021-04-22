@@ -6,13 +6,14 @@ from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import LoginView
 
+from .forms import RegistrationForm
+
 
 class SignUpView(SuccessMessageMixin, CreateView):
     """
     Register view
     """
-    model = User
-    form_class = UserCreationForm
+    form_class = RegistrationForm
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
     success_message = 'Registeration completed successfully! Please login to continue.'

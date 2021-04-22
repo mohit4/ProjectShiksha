@@ -40,8 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'crispy_forms',
     'accounts',
+    'lectures',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,3 +140,6 @@ MESSAGE_TAGS = {
     messages.WARNING : 'alert-warning',
     messages.ERROR : 'alert-danger'
 }
+
+MEDIA_ROOT = "media/"
+MEDIA_URL = "media/"

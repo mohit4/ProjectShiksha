@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<h3>Listing {{ lectures.count }} lecture(s)</h3>
+
+<hr>
+
+{% for lecture in lectures %}
+
+    <div class="card text-center my-2 shadow mb-5 bg-white rounded">
+        <div class="card-header">
+            Lecture by {{ lecture.creator.first_name }} {{ lecture.creator.last_name }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ lecture.title }}</h5>
+            <p class="card-text">{{ lecture.description|truncatechars:50 }}</p>
+            <a href="{% url 'lectures:lecture-detail' pk=lecture.pk %}" class="btn btn-primary">Take lecture</a>
+        </div>
+        <div class="card-footer text-muted">
+            {{ lecture.published_date }}
+        </div>
+    </div>
+
+{% empty %}
+
+<div class="alert alert-secondary" role="alert">
+  No lectures right now!
+</div>
+
+{% endfor %}
+
+{% endblock contents %}
