@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<h3>Listing {{ courses.count }} course(s)</h3>
+
+<hr>
+
+{% for course in courses %}
+
+    <div class="card text-center my-2 shadow mb-5 bg-white rounded">
+        <div class="card-body">
+            <h5 class="card-title">{{ course.title }}</h5>
+            <p class="card-text">{{ course.description|truncatechars:50 }}</p>
+            <a href="{% url 'courses:course-detail' pk=course.pk %}" class="btn btn-primary">Take course</a>
+        </div>
+    </div>
+
+{% empty %}
+
+<div class="alert alert-secondary" role="alert">
+  No courses right now!
+</div>
+
+{% endfor %}
+
+{% endblock contents %}
